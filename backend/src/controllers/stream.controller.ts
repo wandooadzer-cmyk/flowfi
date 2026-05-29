@@ -284,7 +284,7 @@ export const getStreamEvents = async (req: Request, res: Response) => {
     const [events, total] = await Promise.all([
       prisma.streamEvent.findMany({
         where: whereClause,
-        orderBy: { createdAt: order },
+        orderBy: { timestamp: order },
         take: limit,
         ...(cursor
           ? { cursor: { id: cursor }, skip: 1 }
